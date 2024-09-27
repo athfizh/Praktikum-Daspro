@@ -12,8 +12,6 @@ public class SIAKAD05 {
         double bobotTugas = 0.15;
         double bobotUjian = 0.65;
 
-        String nilaiHuruf, nilaiKualifikasi;
-        
         System.out.println("Masukkan nama: ");
         nama = sc.nextLine();
         System.out.println("Masukkan NIM: ");
@@ -29,13 +27,29 @@ public class SIAKAD05 {
         System.out.println("Masukkan nilai ujian: ");
         nilaiUjian = sc.nextDouble();
 
-        nilaiAkhir = (nilaiKuis*bobotKuis) + (nilaiTugas*bobotTugas) + (nilaiUjian*bobotUjian);
-        nilaiHuruf = ( (nilaiAkhir >= 80) ? "A" : ( (nilaiAkhir >= 73) ? "B+" : ( (nilaiAkhir >= 65) ? "B" : (nilaiAkhir >= 60) ? "C+" : ( (nilaiAkhir >= 50) ? "C" : ( (nilaiAkhir >= 39) ? "D" : ( (nilaiAkhir <= 39) ? "D" : "E" ) ) )) ) );
-        nilaiKualifikasi = ( (nilaiAkhir >= 80) ? "Sangat baik" : ( (nilaiAkhir >= 73) ? "Lebih dari baik" : ( (nilaiAkhir >= 65) ? "Baik" : (nilaiAkhir >= 60) ? "Lebih dari cukup" : ( (nilaiAkhir >= 50) ? "Cukup" : ( (nilaiAkhir >= 39) ? "Kurang" : ( (nilaiAkhir <= 39) ? "Kurang" : "Gagal" ) ) )) ) );
+        nilaiAkhir = (nilaiKuis * bobotKuis) + (nilaiTugas * bobotTugas) + (nilaiUjian * bobotUjian);
+        
+        String nilaiHuruf = (nilaiAkhir >= 80) ? "A" :
+                            (nilaiAkhir >= 73) ? "B+" :
+                            (nilaiAkhir >= 65) ? "B" :
+                            (nilaiAkhir >= 60) ? "C+" :
+                            (nilaiAkhir >= 50) ? "C" :
+                            (nilaiAkhir >= 39) ? "D" : "E";
 
-        System.out.println("Mahasiswa dengan nama " + nama + " (" +"NIM " + nim + ")" + " kelas " + kelas + " nomor absen " + absen);
-        System.out.println("Nilai akhir: " + nilaiAkhir);
-        System.out.println("Nilai akhir huruf: " + nilaiHuruf);
-        System.out.println("Nilai kualifikasi: " + nilaiKualifikasi);    
+        String nilaiKualifikasi = (nilaiAkhir >= 80) ? "Sangat baik" :
+                                  (nilaiAkhir >= 73) ? "Lebih dari baik" :
+                                  (nilaiAkhir >= 65) ? "Baik" :
+                                  (nilaiAkhir >= 60) ? "Lebih dari cukup" :
+                                  (nilaiAkhir >= 50) ? "Cukup" :
+                                  (nilaiAkhir >= 39) ? "Kurang" : "Gagal";
+
+        if (nilaiAkhir < 0 || nilaiAkhir > 100) {
+            System.out.println("Error: Nilai akhir tidak valid.");
+        } else {
+            System.out.println("Mahasiswa dengan nama " + nama + " (NIM: " + nim + "), kelas " + kelas + ", nomor absen " + absen);
+            System.out.println("Nilai akhir: " + nilaiAkhir);
+            System.out.println("Nilai akhir huruf: " + nilaiHuruf);
+            System.out.println("Nilai kualifikasi: " + nilaiKualifikasi);
+        }
     }
 }
